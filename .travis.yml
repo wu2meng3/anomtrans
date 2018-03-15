@@ -18,9 +18,9 @@ addons:
             - libubsan0
 
 before_install:
-    - ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
-    - ln -s /usr/bin/g++-6 /usr/local/bin/g++
-    - ln -s /usr/bin/gfortran-6 /usr/local/bin/gfortran
+    - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+    - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
+    - sudo ln -s /usr/bin/gfortran-6 /usr/local/bin/gfortran
     - gcc -v && g++ -v && gfortran -v && cmake --version
     - git clone -b maint https://bitbucket.org/petsc/petsc $HOME/petsc
     - cd $HOME/petsc
