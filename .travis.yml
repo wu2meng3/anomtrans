@@ -1,19 +1,27 @@
 dist: trusty
-sudo: false
+sudo: require
 
 language: cpp
 
 addons:
     apt:
+        sources:
+            - ubuntu-toolchain-r-test
         packages:
-            - g++
-            - gfortran
+            - gcc-6
+            - g++-6
+            - gfortran-6
             - cmake
             - libopenmpi-dev
             - openmpi-bin
             - libboost-all-dev
+            - libubsan0
 
 before_install:
+    - ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+    - ln -s /usr/bin/g++-6 /usr/local/bin/g++
+    - ln -s /usr/bin/gfortran-6 /usr/local/bin/gfortran
+    - gcc -v && g++ -v && gfortran -v && cmake --version
     - git clone -b maint https://bitbucket.org/petsc/petsc $HOME/petsc
     - cd $HOME/petsc
     - ./configure PETSC_ARCH=arch-linux2-cxx-complex-debug --with-cc=mpicc --with-cxx=mpicxx --with-fc=mpif90 --download-fblaslapack --with-clanguage=cxx --with-scalar-type=complex
