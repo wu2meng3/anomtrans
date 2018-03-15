@@ -12,7 +12,6 @@ addons:
             - libopenmpi-dev
             - openmpi-bin
             - libboost-all-dev
-            - libubsan0
 
 before_install:
     - git clone -b maint https://bitbucket.org/petsc/petsc $HOME/petsc
